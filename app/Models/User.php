@@ -40,4 +40,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getFullnameAttribute()
+    {
+        return ucfirst($this->firstname)
+            . strtoupper(empty($this->middlename) ? '' : ' ' . substr($this->middlename, 0, 1)) . '.'
+            . ' ' . ucfirst($this->lastname);
+    }
 }
