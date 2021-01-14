@@ -27,4 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('home');
 
     Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::get('user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('user/{user}/edit', [UserController::class, 'update']);
 });
